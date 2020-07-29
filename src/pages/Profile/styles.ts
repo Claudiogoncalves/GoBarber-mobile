@@ -30,3 +30,14 @@ export const UserAvatar = styled.Image`
 
   align-self: center;
 `;
+
+export const LogoutButton = styled.TouchableOpacity`
+  align-self: flex-end;
+  margin-top: -25px;
+`;
+
+export const BackButtonTitle = styled.Text`
+  font-family: 'RobotoSlab-Medium';
+  font-size: 20px;
+  color: #f4ede8;
+`;

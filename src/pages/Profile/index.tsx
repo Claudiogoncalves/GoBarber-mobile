@@ -29,6 +29,8 @@ import {
   UserAvatarButton,
   UserAvatar,
   BackButton,
+  LogoutButton,
+  BackButtonTitle,
 } from './styles';
 
 interface ProfileFormData {
@@ -40,7 +42,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
 
   const formRef = useRef<FormHandles>(null);
   const emailInputRef = useRef<TextInput>(null);
@@ -160,6 +162,10 @@ const Profile: React.FC = () => {
     navigation.goBack();
   }, [navigation]);
 
+  const handleLogout = useCallback(() => {
+    signOut();
+  }, [signOut]);
+
   return (
     <>
       <KeyboardAvoidingView
@@ -175,6 +181,9 @@ const Profile: React.FC = () => {
             <BackButton onPress={handleGoBack}>
               <Icon name="chevron-left" size={24} color="#999591" />
             </BackButton>
+            <LogoutButton onPress={handleLogout}>
+              <BackButtonTitle>Sair</BackButtonTitle>
+            </LogoutButton>
             <UserAvatarButton onPress={handleUpdateAvatar}>
               <UserAvatar source={{ uri: user.avatar_url }} />
             </UserAvatarButton>
